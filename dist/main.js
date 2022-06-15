@@ -16,7 +16,7 @@
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ count)\n/* harmony export */ });\nfunction count(x, y) {\n  return x - y\n}\n\n\n//# sourceURL=webpack://sgg-webpack5/./src/js/count.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ count)\n/* harmony export */ });\nfunction count(x, y) {\n  document.write('webpack basic usage')\n  return x - y\n}\n\n\n//# sourceURL=webpack://sgg-webpack5/./src/js/count.js?");
 
 /***/ }),
 
