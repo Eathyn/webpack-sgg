@@ -7,7 +7,12 @@ module.exports = {
     filename: 'main.js',
   },
   module: {
-    rules: [],
+    rules: [
+      {
+        test: /\.s[ac]ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
   plugins: [],
   mode: 'development',
