@@ -7,7 +7,12 @@ module.exports = {
     filename: 'main.js',
   },
   module: {
-    rules: [],
+    rules: [
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader'],
+      },
+    ],
   },
   plugins: [],
   mode: 'development',
