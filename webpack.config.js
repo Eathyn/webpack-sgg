@@ -12,6 +12,15 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 30 * 1024, // 小于 30kb 的图片会被 base64 处理
+          },
+        },
+      },
     ],
   },
   plugins: [],
