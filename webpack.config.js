@@ -25,6 +25,13 @@ module.exports = {
           filename: 'static/images/[hash:8][ext][query]',
         },
       },
+      {
+        test: /\.(ttf|woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/media/[hash:8][ext][query]',
+        },
+      },
     ],
   },
   plugins: [],
