@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'static/js/main.js',
+    clean: true,
   },
   module: {
     rules: [
