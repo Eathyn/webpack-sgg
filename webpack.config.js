@@ -26,7 +26,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(ttf|woff|woff2)$/,
+        test: /\.(ttf|woff|woff2|mp4|mp3|avi)$/,
         type: 'asset/resource',
         generator: {
           filename: 'static/media/[hash:8][ext][query]',
