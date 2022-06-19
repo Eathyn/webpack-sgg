@@ -1,4 +1,4 @@
-import count from './js/count'
+import { count } from './js/count'
 import sum from './js/sum'
 
 import './css/index.css'

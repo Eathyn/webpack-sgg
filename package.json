@@ -9,6 +9,9 @@
   "author": "Eathyn",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
