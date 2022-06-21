@@ -2,6 +2,8 @@ const path = require('path')
 const ESLintWebpackPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
 	entry: './src/main.js',
@@ -69,5 +71,9 @@ module.exports = {
 			filename: 'static/css/main.css',
 		}),
 	],
+	optimization: {
+		minimize: true,
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+	},
 	mode: 'production',
 }
