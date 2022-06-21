@@ -1,3 +1,11 @@
 .test-color {
 	color: red;
 }
+
+:root {
+	--mainColor: #12345678;
+}
+
+.test-post-css {
+	color: var(--mainColor);
+}
