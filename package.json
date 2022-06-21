@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --write .",
-    "serve": "webpack serve",
-    "build": "webpack"
+    "dev": "npx webpack serve --config ./config/webpack.dev.js",
+    "build": "npx webpack --config ./config/webpack.prod.js"
   },
   "author": "Eathyn",
   "license": "MIT",
