@@ -76,4 +76,5 @@ module.exports = {
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 	},
 	mode: 'production',
+	devtool: 'source-map',
 }
