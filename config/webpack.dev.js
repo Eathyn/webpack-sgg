@@ -70,6 +70,7 @@ module.exports = {
 	],
 	devServer: {
 		host: 'localhost',
+		hot: true,
 	},
 	mode: 'development',
 	devtool: 'cheap-module-source-map',
