@@ -49,7 +49,7 @@ module.exports = {
 					},
 					{
 						test: /\.m?js$/,
-						exclude: /node_modules/,
+						exclude: /node_modules/, // 或 include: path.resolve(__dirname, '../src'),
 						use: {
 							loader: 'babel-loader',
 							options: {
@@ -64,6 +64,7 @@ module.exports = {
 	plugins: [
 		new ESLintWebpackPlugin({
 			context: path.resolve(__dirname, '../src'),
+			exclude: 'node_modules', // 排除 node_modules
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '../public/index.html'),
