@@ -54,6 +54,8 @@ module.exports = {
 							loader: 'babel-loader',
 							options: {
 								presets: ['@babel/preset-env'],
+								cacheDirectory: true, // 开启 babel 缓存
+								cacheCompression: true, // 缓存文件不要压缩
 							},
 						},
 					},
@@ -65,6 +67,8 @@ module.exports = {
 		new ESLintWebpackPlugin({
 			context: path.resolve(__dirname, '../src'),
 			exclude: 'node_modules', // 排除 node_modules
+			cache: true,
+			cacheLocation: path.resolve(__dirname, '../node-modules/.cache/.eslintcache')
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '../public/index.html'),
