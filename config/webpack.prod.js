@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const os = require('os')
+
+const threads = os.cpus().length
 
 module.exports = {
 	entry: './src/main.js',
@@ -53,14 +56,22 @@ module.exports = {
 					{
 						test: /\.m?js$/,
 						exclude: /node_modules/, // 排除 node_modules
-						use: {
-							loader: 'babel-loader',
-							options: {
-								presets: ['@babel/preset-env'],
-								cacheDirectory: true, // 开启 babel 缓存
-								cacheCompression: true, // 缓存文件不要压缩
+						use: [
+							{
+								loader: 'thread-loader',
+								options: {
+									workers: threads,
+								},
 							},
-						},
+							{
+								loader: 'babel-loader',
+								options: {
+									presets: ['@babel/preset-env'],
+									cacheDirectory: true, // 开启 babel 缓存
+									cacheCompression: true, // 缓存文件不要压缩
+								},
+							},
+						],
 					},
 				],
 			},
@@ -71,7 +82,8 @@ module.exports = {
 			context: path.resolve(__dirname, '../src'),
 			exclude: 'node_modules', // 排除 node_modules
 			cache: true,
-			cacheLocation: path.resolve(__dirname, '../node_modules/.cache/.eslintcache')
+			cacheLocation: path.resolve(__dirname, '../node_modules/.cache/.eslintcache'),
+			threads,
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '../public/index.html'),
@@ -82,7 +94,12 @@ module.exports = {
 	],
 	optimization: {
 		minimize: true,
-		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+		minimizer: [
+			new CssMinimizerPlugin(),
+			new TerserPlugin({
+				parallel: threads,
+			}),
+		],
 	},
 	mode: 'production',
 	devtool: 'source-map',
