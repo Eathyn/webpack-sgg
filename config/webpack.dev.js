@@ -67,7 +67,7 @@ module.exports = {
 								options: {
 									presets: ['@babel/preset-env'],
 									cacheDirectory: true, // 开启 babel 缓存
-									cacheCompression: true, // 缓存文件不要压缩
+									cacheCompression: false, // 缓存文件不要压缩
 								},
 							},
 						],
