@@ -9,12 +9,23 @@ const os = require('os')
 const threads = os.cpus().length
 
 module.exports = {
+	// 单入口
 	entry: './src/main.js',
+
+	// 多入口
+	// entry: {
+	// 	main: './src/main.js',
+	// 	app: './src/app.js',
+	// 	utils: './src/utils.js',
+	// },
+
 	output: {
+		filename: 'static/js/main.js', // 单入口
+		// filename: 'static/js/[name].js', // 多入口
 		path: path.resolve(__dirname, '../dist'),
-		filename: 'static/js/main.js',
 		clean: true,
 	},
+
 	module: {
 		rules: [
 			{
@@ -78,12 +89,16 @@ module.exports = {
 			},
 		],
 	},
+
 	plugins: [
 		new ESLintWebpackPlugin({
 			context: path.resolve(__dirname, '../src'),
 			exclude: 'node_modules', // 排除 node_modules
 			cache: true,
-			cacheLocation: path.resolve(__dirname, '../node_modules/.cache/.eslintcache'),
+			cacheLocation: path.resolve(
+				__dirname,
+				'../node_modules/.cache/.eslintcache',
+			),
 			threads,
 		}),
 		new HtmlWebpackPlugin({
@@ -93,15 +108,21 @@ module.exports = {
 			filename: 'static/css/main.css',
 		}),
 	],
+
 	optimization: {
-		minimize: true,
+		// minimize: true,
 		minimizer: [
 			new CssMinimizerPlugin(),
 			new TerserPlugin({
 				parallel: threads,
 			}),
 		],
+		splitChunks: {
+			chunks: 'all', // 对所有模块都进行分割
+		},
 	},
+
 	mode: 'production',
+
 	devtool: 'source-map',
 }

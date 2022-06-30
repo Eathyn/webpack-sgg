@@ -9,10 +9,21 @@ const os = require('os')
 const threads = os.cpus().length
 
 module.exports = {
+	// 单入口
 	entry: './src/main.js',
+
+	// 多入口
+	// entry: {
+	// 	main: './src/main.js',
+	// 	app: './src/app.js',
+	// 	utils: './src/utils.js',
+	// },
+
 	output: {
-		path: undefined,
+		path: path.resolve(__dirname, '../dist'),
 		filename: 'static/js/main.js',
+		// filename: 'static/js/[name].js', // 多入口
+		clean: true,
 	},
 	module: {
 		rules: [
@@ -96,13 +107,16 @@ module.exports = {
 		}),
 	],
 	optimization: {
-		minimize: true,
+		// minimize: true,
 		minimizer: [
 			new CssMinimizerPlugin(),
 			new TerserPlugin({
 				parallel: threads,
 			}),
 		],
+		splitChunks: {
+			chunks: 'all', // 对所有模块都进行分割
+		},
 	},
 	devServer: {
 		host: 'localhost',
