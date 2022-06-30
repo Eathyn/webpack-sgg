@@ -20,8 +20,10 @@ module.exports = {
 	// },
 
 	output: {
-		filename: 'static/js/main.js', // 单入口
+		// filename: 'static/js/main.js', // 单入口
 		// filename: 'static/js/[name].js', // 多入口
+		filename: 'static/js/[name].js',
+		chunkFilename: 'static/js/[name].chunk.js',
 		path: path.resolve(__dirname, '../dist'),
 		clean: true,
 	},

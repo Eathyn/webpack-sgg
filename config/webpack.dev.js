@@ -21,10 +21,12 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		filename: 'static/js/main.js',
+		filename: 'static/js/[name].js',
+		chunkFilename: 'static/js/[name].chunk.js',
 		// filename: 'static/js/[name].js', // 多入口
 		clean: true,
 	},
+
 	module: {
 		rules: [
 			{
@@ -88,6 +90,7 @@ module.exports = {
 			},
 		],
 	},
+
 	plugins: [
 		new ESLintWebpackPlugin({
 			context: path.resolve(__dirname, '../src'),
@@ -95,7 +98,7 @@ module.exports = {
 			cache: true,
 			cacheLocation: path.resolve(
 				__dirname,
-				'../node-modules/.cache/.eslintcache',
+				'../node_modules/.cache/.eslintcache',
 			),
 			threads,
 		}),
@@ -106,6 +109,7 @@ module.exports = {
 			filename: 'static/css/main.css',
 		}),
 	],
+
 	optimization: {
 		// minimize: true,
 		minimizer: [
@@ -118,10 +122,13 @@ module.exports = {
 			chunks: 'all', // 对所有模块都进行分割
 		},
 	},
+
 	devServer: {
 		host: 'localhost',
 		hot: true,
 	},
+
 	mode: 'development',
+
 	devtool: 'cheap-module-source-map',
 }
