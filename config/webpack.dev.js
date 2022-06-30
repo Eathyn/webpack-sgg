@@ -21,9 +21,9 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		filename: 'static/js/[name].js',
-		chunkFilename: 'static/js/[name].chunk.js',
-		// filename: 'static/js/[name].js', // 多入口
+		filename: 'static/js/[name].js', // 入口文件打包输出资源命名方式
+		chunkFilename: 'static/js/[name].chunk.js', // 动态导入输出资源命名方式
+		assetModuleFilename: 'static/media/[name].[hash][ext]', // 图片、字体等资源命名方式（注意用hash）
 		clean: true,
 	},
 
@@ -54,16 +54,16 @@ module.exports = {
 								maxSize: 30 * 1024, // 小于 30kb 的图片会被 base64 处理
 							},
 						},
-						generator: {
-							filename: 'static/images/[hash:8][ext][query]',
-						},
+						// generator: {
+						// 	filename: 'static/images/[hash:8][ext][query]',
+						// },
 					},
 					{
 						test: /\.(ttf|woff|woff2|mp4|mp3|avi)$/,
 						type: 'asset/resource',
-						generator: {
-							filename: 'static/media/[hash:8][ext][query]',
-						},
+						// generator: {
+						// 	filename: 'static/media/[hash:8][ext][query]',
+						// },
 					},
 					{
 						test: /\.m?js$/,
@@ -106,7 +106,8 @@ module.exports = {
 			template: path.resolve(__dirname, '../public/index.html'),
 		}),
 		new MiniCssExtractPlugin({
-			filename: 'static/css/main.css',
+			filename: 'static/css/[name].css',
+			chunkFilename: 'static/css/[name].chunk.css',
 		}),
 	],
 
