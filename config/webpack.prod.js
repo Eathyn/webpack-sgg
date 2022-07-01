@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const os = require('os')
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 
 const threads = os.cpus().length
 
@@ -108,6 +109,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'static/css/[name].css',
 			chunkFilename: 'static/css/[name].chunk.css',
+		}),
+		new PreloadWebpackPlugin({
+			rel: 'preload',
+			as: 'script',
 		}),
 	],
 
