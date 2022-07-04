@@ -8,3 +8,8 @@ btn1.addEventListener('click', () => {
     console.log(sum(1, 2, 3, 4, 5))
   })
 })
+
+const promise = Promise.resolve()
+promise.then(() => {
+  console.log('hello promise')
+})
