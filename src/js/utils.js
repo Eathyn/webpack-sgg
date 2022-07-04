@@ -6,6 +6,11 @@ function sum(...nums) {
   return sum
 }
 
+function mul(a, b) {
+  return a * b
+}
+
 module.exports = {
   sum,
+  mul,
 }

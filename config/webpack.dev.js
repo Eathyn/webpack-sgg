@@ -127,6 +127,9 @@ module.exports = {
 		splitChunks: {
 			chunks: 'all', // 对所有模块都进行分割
 		},
+		runtimeChunk: {
+			name: (entrypoint) => `runtime~${entrypoint.name}`,
+		},
 	},
 
 	devServer: {
