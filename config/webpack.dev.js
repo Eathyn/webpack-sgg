@@ -22,8 +22,8 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		filename: 'static/js/[name].js', // 入口文件打包输出资源命名方式
-		chunkFilename: 'static/js/[name].chunk.js', // 动态导入输出资源命名方式
+		filename: 'static/js/[name].[contenthash:8].js', // 入口文件打包输出资源命名方式
+		chunkFilename: 'static/js/[name].[contenthash:8].chunk.js', // 动态导入输出资源命名方式
 		assetModuleFilename: 'static/media/[name].[hash][ext]', // 图片、字体等资源命名方式（注意用hash）
 		clean: true,
 	},
@@ -107,8 +107,8 @@ module.exports = {
 			template: path.resolve(__dirname, '../public/index.html'),
 		}),
 		new MiniCssExtractPlugin({
-			filename: 'static/css/[name].css',
-			chunkFilename: 'static/css/[name].chunk.css',
+			filename: 'static/css/[name].[contenthash:8].css',
+			chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
 		}),
 		new PreloadWebpackPlugin({
 			rel: 'preload',
