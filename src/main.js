@@ -1,5 +1,5 @@
-import count from './js/count'
-import sum from './js/sum'
+import { createApp } from 'vue'
+import App from './App'
+import router from './router/index'
 
-console.log(count(2, 1))
-console.log(sum(1, 2, 3, 4))
+createApp(App).use(router).mount('#app')
